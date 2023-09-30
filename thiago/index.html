@@ -1,72 +1,140 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body>
-    
-    <main class="container">
-        <div class="row">
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <div class="d-flex col-12" >
-                     <input id="pesquisar" class="form-control me-2" type="search" placeholder="digitar o nome" aria-label="Digitar o nome">
-                     <button class="btn btn-outline-success" type="submit" onclick="buscar()">buscar</button>
-                    </div>
-                </div>
-              </nav>
+
+  <main class="container">
+    <div class="row">
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <div class="d-flex col-12">
+            <input id="pesquisar" class="form-control me-2" type="search" placeholder="digitar o nome"
+              aria-label="Digitar o nome">
+            <button class="btn btn-outline-success" type="submit" onclick="buscar()">buscar</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <nav>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Email</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Cep</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Thiago</td>
+            <td>Passare</td>
+            <td>thiagolpezzi@gmail.com</td>
+            <td>Fortaleza</td>
+            <td>CE</td>
+            <td>60000</td>
+            <td>5555</td>
+            <td>
+              <button id="editar" type="button" class="btn btn-primary">Editar</button>
+              /
+              <button id="deletar" type="button" class="btn btn-danger">Deletar</button>
+
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </nav>
+
+  </main>
+  <!-- Modal -->
+  <div class="modal" id="infor" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 id="infor-title" class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <nav>
 
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Endereço</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Cep</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Thiago</td>
-                    <td>Passare</td>
-                    <td>thiagolpezzi@gmail.com</td>
-                    <td>Fortaleza</td>
-                    <td>CE</td>
-                    <td>60000</td>
-                    <td>5555</td>
-                    <td>
-                        <button id="editar" type="button" class="btn btn-primary">Editar</button>
-                        /
-                        <button id="deletar" type="button" class="btn btn-danger">Deletar</button>
+        <div class="modal-body">
+          <!-- Formulário -->
+          <form>
+            <div class="mb-3">
+              <label for="infor-name" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="infor-name">
+            </div>
 
+            <div class="mb-3">
+              <label for="infor-email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="infor-email">
+            </div>
 
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="mb-3">
+              <label for="infor-address" class="form-label">Endereço</label>
+              <input type="text" class="form-control" id="infor-address">
+            </div>
 
-        </nav>
+            <div class="mb-3">
+              <label for="infor-city" class="form-label">Cidade</label>
+              <input type="text" class="form-control" id="infor-city">
+            </div>
 
-    </main>
+            <div class="mb-3">
+              <label for="infor-state" class="form-label">Estado</label>
+              <input type="text" class="form-control" id="infor-state">
+            </div>
+
+            <div class="mb-3">
+              <label for="infor-cep" class="form-label">CEP</label>
+              <input type="text" class="form-control" id="infor-cep">
+            </div>
+
+            <div class="mb-3">
+              <label for="infor-phoneNumber" class="form-label">Número</label>
+              <input type="text" class="form-control" id="infor-phoneNumber">
+            </div>
 
 
 
+          </form>
 
-    <script src="js.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="enviar" data-type="" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
