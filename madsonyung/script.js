@@ -1,11 +1,3 @@
-// "name": "Tonya Ritchie",
-// "email": "Jasmin84@yahoo.com",
-// "address": "12700 Renner Pine",
-// "city": "Cathrynland",
-// "state": "KS",
-// "cep": "21734-8270",
-// "phoneNumber": "808-948-6506"
-
 const infor_clientes = "../clientes.json";
 
 lerBaseDeDados = async () => {
@@ -86,8 +78,17 @@ addEventClick = () => {
     switch (ENVIAR.getAttribute("data-type")) {
       case "editar":
         infor[objIndex].name = document.getElementById("infor-name").value;
+        infor[objIndex].email = document.getElementById("infor-email").value;
+        infor[objIndex].address =
+          document.getElementById("infor-address").value;
+        infor[objIndex].city = document.getElementById("infor-city").value;
+        infor[objIndex].state = document.getElementById("infor-state").value;
+        infor[objIndex].cep = document.getElementById("infor-cep").value;
+        infor[objIndex].phoneNumber =
+          document.getElementById("infor-phoneNumber").value;
         break;
       case "deletar":
+        infor.splice(objIndex, 1);
         break;
       case "criar":
         break;
@@ -97,17 +98,54 @@ addEventClick = () => {
     }
 
     await addClienteTable(infor);
+    hideModal();
   });
 };
 
+hideModal = () => {
+  let inforclose = document.getElementById("infor-close");
+  inforclose.click();
+};
+
 showModal = () => {
-  let modal = new bootstrap.Modal(document.getElementById("infor"))
+  let modal = new bootstrap.Modal(document.getElementById("infor"));
   modal.show();
 };
 
 deletar = async (e) => {
   console.log(e.id);
+  const ID = parseInt(e.id.split("deletar-")[1]);
+  const infor = await window.clientes;
 
+  // Filtrar pelo email
+  const EMAIL_INFOR = document.getElementById(`email-${ID}`).innerHTML;
+  let filter_clientes = infor.filter(
+    (cliente) => cliente.email === EMAIL_INFOR
+  );
+
+  // add logica de mostrar paragrafo
+  let infor_delete = document.getElementById("infor-descricao");
+  let infor_form = document.getElementById("infor-form");
+
+  // removendo as class com DOM
+  infor_delete.classList.add("d-block");
+  infor_delete.classList.remove("d-none");
+
+  infor_form.classList.remove("d-block");
+  infor_form.classList.add("d-none");
+
+  infor_delete.innerHTML = `Deseja deletar o E-mail: ${filter_clientes[0].email}`;
+
+  // validar deletar
+  const ENVIAR = document.getElementById("enviar");
+  ENVIAR.innerHTML = "Deletar";
+  ENVIAR.setAttribute("data-type", "deletar");
+  ENVIAR.setAttribute("data-email", filter_clientes[0].email);
+
+  const TITLE = document.getElementById("infor-title");
+  TITLE.innerHTML = `Deletar: ${filter_clientes[0].name}`;
+
+  addEventClick();
   showModal();
 };
 
@@ -120,6 +158,16 @@ editar = async (e) => {
   let filter_clientes = infor.filter(
     (cliente) => cliente.email === EMAIL_INFOR
   );
+
+  let infor_delete = document.getElementById("infor-descricao");
+  let infor_form = document.getElementById("infor-form");
+
+  // removendo as class com DOM
+  infor_delete.classList.remove("d-block");
+  infor_delete.classList.add("d-none");
+
+  infor_form.classList.add("d-block");
+  infor_form.classList.remove("d-none");
 
   const NAME = document.getElementById("infor-name");
   const EMAIL = document.getElementById("infor-email");
