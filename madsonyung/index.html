@@ -57,8 +57,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <p id="infor-descricao" class="d-none"></p>
                     <!-- Formulario -->
-                    <form>
+                    <form id="infor-form" class="d-block">
                         <div class="mb-3">
                             <label for="infor-name" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="infor-name">
@@ -90,7 +91,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="infor-close"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button id="enviar" data-type="" type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
