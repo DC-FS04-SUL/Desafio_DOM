@@ -57,8 +57,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <p id="infor-descricao" class="d-none"></p>
                     <!-- formulario -->
-                    <form>
+                    <form id="infor-form" class="d-block">
                         <div class="mb-3">
                             <label for="infor-name" class="form-label">Nome</label>
                             <input type="email" class="form-control" id="infor-name"  aria-describedby="emailHelp">
@@ -71,7 +72,7 @@
 
                         <div class="mb-3">
                             <label for="infor-anddress" class="form-label">Endereço</label>
-                            <input type="text" class="form-control" id="infor-anddress"  aria-describedby="emailHelp">
+                            <input type="text" class="form-control" id="infor-address"  aria-describedby="emailHelp">
                         </div>
 
                         <div class="mb-3">
@@ -95,7 +96,7 @@
                         </div>
                     </form>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" id="infor-close" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                     <button id="enviar" data-type="" type="button" class="btn btn-primary">Modal</button>
                 </div>
             </div>
@@ -112,5 +113,4 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
