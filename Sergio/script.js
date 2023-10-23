@@ -78,14 +78,6 @@ addEventClick = () => {
     switch (ENVIAR.getAttribute("data-type")) {
       case "editar":
         infor[objIndex].name = document.getElementById("infor-name").value;
-        infor[objIndex].email = document.getElementById("infor-email").value;
-        infor[objIndex].address =
-          document.getElementById("infor-address").value;
-        infor[objIndex].city = document.getElementById("infor-city").value;
-        infor[objIndex].state = document.getElementById("infor-state").value;
-        infor[objIndex].cep = document.getElementById("infor-cep").value;
-        infor[objIndex].phoneNumber =
-          document.getElementById("infor-phoneNumber").value;
         break;
       case "deletar":
         infor.splice(objIndex, 1);
@@ -123,20 +115,19 @@ deletar = async (e) => {
     (cliente) => cliente.email === EMAIL_INFOR
   );
 
-  // add logica de mostrar paragrafo
   let infor_delete = document.getElementById("infor-descricao");
+
   let infor_form = document.getElementById("infor-form");
 
-  // removendo as class com DOM
   infor_delete.classList.add("d-block");
   infor_delete.classList.remove("d-none");
 
   infor_form.classList.remove("d-block");
   infor_form.classList.add("d-none");
 
-  infor_delete.innerHTML = `Deseja deletar o E-mail: ${filter_clientes[0].email}`;
+  infor_delete.innerHTML = `Deseja deletar o usuário ${filter_clientes[0].email}`;
 
-  // validar deletar
+  //Validar deletar
   const ENVIAR = document.getElementById("enviar");
   ENVIAR.innerHTML = "Deletar";
   ENVIAR.setAttribute("data-type", "deletar");
@@ -159,16 +150,6 @@ editar = async (e) => {
     (cliente) => cliente.email === EMAIL_INFOR
   );
 
-  let infor_delete = document.getElementById("infor-descricao");
-  let infor_form = document.getElementById("infor-form");
-
-  // removendo as class com DOM
-  infor_delete.classList.remove("d-block");
-  infor_delete.classList.add("d-none");
-
-  infor_form.classList.add("d-block");
-  infor_form.classList.remove("d-none");
-
   const NAME = document.getElementById("infor-name");
   const EMAIL = document.getElementById("infor-email");
   const ADDRESS = document.getElementById("infor-address");
@@ -184,6 +165,15 @@ editar = async (e) => {
   STATE.value = filter_clientes[0].state;
   CEP.value = filter_clientes[0].cep;
   PHONE_NUMBER.value = filter_clientes[0].phoneNumber;
+
+    let infor_delete = document.getElementById("infor-descricao");
+    let infor_form = document.getElementById("infor-form")
+
+    infor_delete.classList.add("d-block")
+    infor_delete.classList.remove("d-none")
+
+    infor_form.classList.add("d-block")
+    infor_form.classList.remove("d-none")
 
   const ENVIAR = document.getElementById("enviar");
   ENVIAR.innerHTML = "Alterar";
